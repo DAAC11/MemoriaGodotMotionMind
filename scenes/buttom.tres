@@ -1,0 +1,14 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cvbrpob0n7eyg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dkhdv"]
+bg_color = Color(0.350069, 0.690847, 0.354904, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 20
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0, 0, 0, 0.529412)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[resource]
+Button/styles/normal = SubResource("StyleBoxFlat_dkhdv")

@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://i8gn4k3najsx"]
+
+[ext_resource type="Texture2D" uid="uid://btsp7he27uuh5" path="res://assets/background/Purple.png" id="1_0ccug"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_cwbbn"]
+[ext_resource type="PackedScene" uid="uid://obnbopktrpdg" path="res://scenes/hud.tscn" id="3_x3ahc"]
+[ext_resource type="AudioStream" uid="uid://bjwijc6m3tagx" path="res://assets/Sounds/string_major.wav" id="4_5aevs"]
+[ext_resource type="AudioStream" uid="uid://d3ifitodoa0ne" path="res://assets/Sounds/string_tune1.wav" id="5_wr07p"]
+[ext_resource type="AudioStream" uid="uid://d3fceogatew81" path="res://assets/Sounds/card_shuffle.wav" id="6_0usho"]
+[ext_resource type="AudioStream" uid="uid://uery04p8ocx7" path="res://assets/Sounds/end.wav" id="7_qa2nl"]
+[ext_resource type="AudioStream" uid="uid://5a5c0el3ebbv" path="res://assets/Sounds/card_shoot_out.wav" id="8_p8vnr"]
+[ext_resource type="PackedScene" uid="uid://dkqxjcny4e20k" path="res://scenes/http.tscn" id="9_45rxe"]
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwbbn")
+
+[node name="ColorRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.513726)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0ccug")
+stretch_mode = 1
+
+[node name="grid" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 102.0
+offset_top = 35.0
+offset_right = -100.0
+offset_bottom = -113.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="HUD" parent="." instance=ExtResource("3_x3ahc")]
+layout_mode = 1
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="god" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("4_5aevs")
+attenuation = 0.965936
+
+[node name="fail" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("5_wr07p")
+
+[node name="start" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("6_0usho")
+
+[node name="end" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("7_qa2nl")
+
+[node name="card" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("8_p8vnr")
+
+[node name="HTTP" parent="." instance=ExtResource("9_45rxe")]
+process_mode = 3
+
+[editable path="HUD"]

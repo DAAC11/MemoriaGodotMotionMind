@@ -1,0 +1,160 @@
+[gd_scene load_steps=10 format=3 uid="uid://djxbxhf4a5xj5"]
+
+[ext_resource type="Texture2D" uid="uid://cqviwfeydkra5" path="res://assets/background/Green.png" id="1_p05cy"]
+[ext_resource type="Script" path="res://scripts/inicio.gd" id="1_shmim"]
+[ext_resource type="FontFile" uid="uid://c82idb45elwlp" path="res://assets/fonts/Nunito-Bold.ttf" id="2_nfdwi"]
+[ext_resource type="Theme" uid="uid://bbb0tohw7xjrj" path="res://scenes/label.tres" id="3_10fkg"]
+[ext_resource type="Script" path="res://scripts/button_empezar.gd" id="4_jhum2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5r8v"]
+bg_color = Color(0.39215, 0.62, 0.3162, 0.541176)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="Theme" id="Theme_myab3"]
+Panel/styles/panel = SubResource("StyleBoxFlat_f5r8v")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fb32w"]
+bg_color = Color(0.372549, 0.694118, 0.266667, 0.709804)
+border_color = Color(0.991352, 0.991366, 0.989243, 0.568627)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="Theme" id="Theme_5rieb"]
+Button/font_sizes/font_size = 50
+Button/fonts/font = ExtResource("2_nfdwi")
+Button/styles/normal = SubResource("StyleBoxFlat_fb32w")
+
+[node name="Inicio" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_shmim")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.415686)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p05cy")
+stretch_mode = 1
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = 50.0
+offset_right = -77.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_myab3")
+
+[node name="Title" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="Panel/Title"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.533333)
+theme_override_fonts/font = ExtResource("2_nfdwi")
+theme_override_font_sizes/font_size = 45
+text = "Memoria"
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 185.0
+offset_top = 83.0
+offset_right = -185.0
+offset_bottom = -82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" type="VBoxContainer" parent="Panel/Panel"]
+layout_mode = 2
+offset_left = 150.0
+offset_top = 27.0
+offset_right = 480.0
+offset_bottom = 235.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+
+[node name="CodigoLabel" type="Label" parent="Panel/Panel/Options"]
+layout_mode = 2
+theme = ExtResource("3_10fkg")
+text = "Código "
+horizontal_alignment = 1
+
+[node name="Codigo" type="LineEdit" parent="Panel/Panel/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Código"
+
+[node name="NombreLabel" type="Label" parent="Panel/Panel/Options"]
+layout_mode = 2
+theme = ExtResource("3_10fkg")
+text = "Nombre"
+horizontal_alignment = 1
+
+[node name="Nombre" type="LineEdit" parent="Panel/Panel/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Nombre"
+
+[node name="DificultadLabel" type="Label" parent="Panel/Panel/Options"]
+layout_mode = 2
+theme = ExtResource("3_10fkg")
+text = "Dificultad"
+horizontal_alignment = 1
+
+[node name="Dificultad" type="OptionButton" parent="Panel/Panel/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+item_count = 3
+popup/item_0/text = "2x3"
+popup/item_1/text = "4x4"
+popup/item_1/id = 1
+popup/item_2/text = "4x6"
+popup/item_2/id = 2
+
+[node name="Warning" type="Label" parent="Panel/Panel/Options"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.59, 0.0833867, 0.0472, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.372549)
+theme_override_colors/font_outline_color = Color(0, 0.1, 0.2, 0.247059)
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ButtonEmpezar" type="Button" parent="Panel/Panel"]
+layout_mode = 2
+offset_left = 150.0
+offset_top = 292.0
+offset_right = 480.0
+offset_bottom = 355.0
+theme = SubResource("Theme_5rieb")
+theme_override_font_sizes/font_size = 40
+text = "Empezar"
+script = ExtResource("4_jhum2")

@@ -1,0 +1,137 @@
+[gd_scene load_steps=10 format=3 uid="uid://dar1w22vpst6o"]
+
+[ext_resource type="Theme" uid="uid://bbb0tohw7xjrj" path="res://scenes/label.tres" id="1_6hemd"]
+[ext_resource type="StyleBox" uid="uid://8o6bnasgqvb4" path="res://scenes/panel.tres" id="1_58yi4"]
+[ext_resource type="Script" path="res://scripts/win.gd" id="1_qighw"]
+[ext_resource type="FontFile" uid="uid://d4b4ic5bartod" path="res://assets/fonts/Nunito-Regular.ttf" id="4_86jql"]
+[ext_resource type="Theme" uid="uid://cvbrpob0n7eyg" path="res://scenes/buttom.tres" id="5_x0r20"]
+[ext_resource type="AudioStream" uid="uid://uery04p8ocx7" path="res://assets/Sounds/end.wav" id="6_nc3ai"]
+
+[sub_resource type="Theme" id="Theme_h6ikb"]
+Panel/styles/panel = ExtResource("1_58yi4")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r12r0"]
+bg_color = Color(0.231, 0.7, 0.504583, 0.639216)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+shadow_size = 5
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="Theme" id="Theme_6r4mw"]
+Panel/styles/panel = SubResource("StyleBoxFlat_r12r0")
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qighw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23, 0.23, 0.23, 0.333333)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 2
+theme = SubResource("Theme_h6ikb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Titulo" type="Label" parent="CenterContainer/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_6hemd")
+text = "FELICIDADES COMPLETASTE EL TABLERO"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="CenterContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 20.0
+theme = SubResource("Theme_6r4mw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Info" type="Label" parent="CenterContainer/Panel/VBoxContainer/Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_86jql")
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/Panel/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 382.0
+offset_right = -8.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NuevaPartida" type="Button" parent="CenterContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_x0r20")
+text = "Volver a jugar"
+
+[node name="Dificultad" type="Button" parent="CenterContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_x0r20")
+text = "Cambiar dificultad"
+
+[node name="Inicio" type="Button" parent="CenterContainer/Panel/VBoxContainer/Panel/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_x0r20")
+text = "Volver al inicio"
+
+[node name="end" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("6_nc3ai")
+
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Panel/HBoxContainer/NuevaPartida" to="." method="_on_nueva_partida_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Panel/HBoxContainer/Dificultad" to="." method="_on_dificultad_pressed"]
+[connection signal="pressed" from="CenterContainer/Panel/VBoxContainer/Panel/HBoxContainer/Inicio" to="." method="_on_inicio_pressed"]

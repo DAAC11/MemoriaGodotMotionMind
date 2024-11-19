@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bbb0tohw7xjrj"]
+
+[ext_resource type="FontFile" uid="uid://c82idb45elwlp" path="res://assets/fonts/Nunito-Bold.ttf" id="1_31dyq"]
+
+[resource]
+default_font_size = 30
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.345098)
+Label/fonts/font = ExtResource("1_31dyq")

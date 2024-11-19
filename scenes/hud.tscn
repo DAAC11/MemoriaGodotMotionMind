@@ -1,0 +1,153 @@
+[gd_scene load_steps=9 format=3 uid="uid://obnbopktrpdg"]
+
+[ext_resource type="FontFile" uid="uid://d4b4ic5bartod" path="res://assets/fonts/Nunito-Regular.ttf" id="1_a82qu"]
+[ext_resource type="FontFile" uid="uid://c82idb45elwlp" path="res://assets/fonts/Nunito-Bold.ttf" id="2_l1wsk"]
+[ext_resource type="Texture2D" uid="uid://dl8ntjpj1a180" path="res://assets/ui/pause.png" id="3_tu3sv"]
+[ext_resource type="Texture2D" uid="uid://dbs8toljx3hmu" path="res://assets/ui/return.png" id="4_lgdic"]
+[ext_resource type="Script" path="res://button_pause.gd" id="4_yrcsb"]
+[ext_resource type="Texture2D" uid="uid://uwfcak74apj1" path="res://assets/ui/exit.png" id="6_cxhpt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmlhl"]
+bg_color = Color(0.4128, 0.53136, 0.96, 0.329412)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.443137)
+shadow_size = 2
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="Theme" id="Theme_dqapa"]
+Panel/styles/panel = SubResource("StyleBoxFlat_tmlhl")
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 540.0
+offset_right = -27.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_dqapa")
+
+[node name="Sections" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SScore" type="VBoxContainer" parent="Panel/Sections"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SLabel" type="Label" parent="Panel/Sections/SScore"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_a82qu")
+theme_override_font_sizes/font_size = 20
+text = "PUNTAJE:"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="score" type="Label" parent="Panel/Sections/SScore"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_l1wsk")
+theme_override_font_sizes/font_size = 55
+text = "##"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="STime" type="VBoxContainer" parent="Panel/Sections"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TLabel" type="Label" parent="Panel/Sections/STime"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_a82qu")
+theme_override_font_sizes/font_size = 20
+text = "TIEMPO:"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="seconds" type="Label" parent="Panel/Sections/STime"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_l1wsk")
+theme_override_font_sizes/font_size = 55
+text = "##"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SMoves" type="VBoxContainer" parent="Panel/Sections"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MLabel" type="Label" parent="Panel/Sections/SMoves"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_a82qu")
+theme_override_font_sizes/font_size = 20
+text = "MOVIMIENTOS"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="moves" type="Label" parent="Panel/Sections/SMoves"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_l1wsk")
+theme_override_font_sizes/font_size = 55
+text = "##"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sbuttons" type="VBoxContainer" parent="Panel/Sections"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="ButtonPause" type="TextureButton" parent="Panel/Sections/Sbuttons"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("3_tu3sv")
+ignore_texture_size = true
+stretch_mode = 5
+script = ExtResource("4_yrcsb")
+
+[node name="ButtonReset" type="TextureButton" parent="Panel/Sections/Sbuttons"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_lgdic")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Sbuttons2" type="VBoxContainer" parent="Panel/Sections"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="ExitButton" type="TextureButton" parent="Panel/Sections/Sbuttons2"]
+process_mode = 3
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.0
+texture_normal = ExtResource("6_cxhpt")
+ignore_texture_size = true
+stretch_mode = 5
